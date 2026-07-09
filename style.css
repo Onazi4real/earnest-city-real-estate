@@ -13,7 +13,8 @@
 body{
     background:#111;
     color:#fff;
-    overflow-x: hidden; /* Vital: Stops components from expanding sideways */
+    overflow-x: hidden; /* Crucial: stops elements from overflowing sideways */
+    width: 100%;
 }
 
 img{
@@ -65,7 +66,7 @@ header{
     align-items:center;
     z-index:1000;
     transition:.4s;
-    background: rgba(8, 20, 35, 0.85); /* Gives context background even before scroll */
+    background: rgba(8, 20, 35, 0.95);
     backdrop-filter: blur(10px);
 }
 
@@ -609,13 +610,13 @@ footer{
 }
 
 /*========================================
-      WHATSAPP BUTTON
+      FLOATING INTERACTIVE BUTTONS
 ========================================*/
 
 .whatsapp{
     position:fixed;
-    bottom:30px;
-    right:30px;
+    bottom:20px;
+    right:20px; /* Anchored neatly to the actual screen edge */
     width:60px;
     height:60px;
     background:#25D366;
@@ -625,8 +626,8 @@ footer{
     justify-content:center;
     align-items:center;
     font-size:28px;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-    z-index:999;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    z-index:9999;
     transition:.4s;
 }
 
@@ -634,16 +635,12 @@ footer{
     transform:scale(1.1);
 }
 
-/*========================================
-      BACK TO TOP
-========================================*/
-
 #topBtn{
     position:fixed;
-    bottom:105px;
-    right:30px;
-    width:55px;
-    height:55px;
+    bottom:90px;
+    right:20px; /* Anchored neatly directly above the WhatsApp button */
+    width:60px;
+    height:60px;
     border:none;
     border-radius:50%;
     background:#f3bc23;
@@ -654,7 +651,7 @@ footer{
     display:none; 
     justify-content:center;
     align-items:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
     z-index:9999;
     transition:.3s;
 }
@@ -672,36 +669,28 @@ footer{
     header {
         padding: 15px 5%;
     }
-    .content h1 {
-        font-size: 55px;
-    }
 }
 
 @media (max-width:768px){
-    /* --- Global Mobile Overrides --- */
     body {
-        text-align: center; /* Centers default text layout across components */
+        text-align: center;
     }
 
     header{
         padding: 12px 20px;
         background:#081423; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         width: 100%;
     }
 
-    /* Forcing Logo Container layout to stay small and centered inline */
     .logo {
         display: flex;
         align-items: center;
         gap: 10px;
-        text-align: left; /* Keeps logo text cleanly aligned with its small icon */
+        text-align: left;
     }
 
     .logo-image{
-        width: 45px; /* Manually shrinks down the large image asset */
+        width: 45px;
         height: 45px;
         object-fit: contain;
     }
@@ -731,7 +720,6 @@ footer{
         text-align:center;
         padding: 15px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     nav.active{
@@ -743,11 +731,6 @@ footer{
         display: block;
         width: 100%;
     }
-    
-    .hero {
-        height: 100vh;
-        padding: 0 20px;
-    }
 
     .content h1{
         font-size:36px;
@@ -755,79 +738,66 @@ footer{
 
     .content p{
         font-size:16px;
-        margin-bottom: 35px;
     }
 
-    .btn{
-        padding:15px 45px;
-        font-size:13px;
-        letter-spacing: 2px;
-    }
-
-    /* --- Sections Centering --- */
+    /* --- Forces Grids to Expand to full mobile width --- */
     .about, .properties, .why-us, .stats, .testimonials, .contact {
-        padding: 60px 20px;
-        text-align: center;
+        padding: 60px 15px;
     }
 
-    .section-title h2{
-        font-size:28px;
-    }
-
-    .section-title p{
-        font-size:15px;
-    }
-
-    .about-gallery{
-        grid-template-columns:1fr;
-        gap:20px;
+    .about-gallery, .property-grid, .why-grid, .stats-grid, .testimonial-grid {
+        grid-template-columns: 1fr !important; /* Stack columns completely layout-wise */
+        width: 100%;
+        max-width: 100%;
         margin-top: 40px;
+        gap: 25px;
     }
 
-    .gallery-card img{
-        height:240px;
-        margin: 0 auto; /* Centers images if they downscale */
-    }
-
-    .property-card, .why-card, .stat-card, .testimonial-card {
+    .property-card, .gallery-card, .why-card, .stat-card, .testimonial-card {
+        width: 100%;
         text-align: center;
+    }
+
+    .property-card img, .gallery-card img {
+        width: 100%;
+        height: 280px; /* Makes your property pictures nice, clear, and big */
     }
 
     .testimonial-card .client {
-        flex-direction: column; /* Stacks client picture and name on mobile */
+        flex-direction: column;
         justify-content: center;
         text-align: center;
-        gap: 10px;
-    }
-
-    .cta{
-       height:65vh;
-       padding: 0 20px;
     }
 
     .cta-content h2{
         font-size:32px;
     }
 
-    .cta-content p{
-        font-size:15px;
-    }
-
-    /* --- Footer Centering Fix --- */
     .footer-container{
         grid-template-columns:1fr;
-        text-align:center; /* Centers all heading & descriptive paragraphs */
+        text-align:center;
         gap:40px;
-    }
-
-    .footer-container ul {
-        padding: 0;
     }
 
     .footer-container p {
         display: flex;
-        justify-content: center; /* Centers the icon + text pairs */
+        justify-content: center;
         align-items: center;
         gap: 8px;
     }
-}
+
+    /* Keep the floating buttons cleanly structured relative to device viewing windows */
+    .whatsapp {
+        right: 15px;
+        bottom: 15px;
+        width: 55px;
+        height: 55px;
+    }
+
+    #topBtn {
+        right: 15px;
+        bottom: 80px;
+        width: 55px;
+        height: 55px;
+    }
+      }
