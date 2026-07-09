@@ -10,11 +10,12 @@
     scroll-behavior:smooth;
 }
 
-body{
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* Stops horizontal page stretching completely */
     background:#111;
     color:#fff;
-    overflow-x: hidden; /* Crucial: stops elements from overflowing sideways */
-    width: 100%;
 }
 
 img{
@@ -28,6 +29,8 @@ a{
 
 section{
     width:100%;
+    max-width: 100%;
+    overflow: hidden;
     clear: both;
 }
 
@@ -82,8 +85,8 @@ header.active{
 }
 
 .logo-image {
-    width: 50px; 
-    height: 50px;
+    width: 60px; /* Perfect standard desktop size */
+    height: auto;
     object-fit: contain;
 }
 
@@ -193,6 +196,7 @@ nav a:hover{
 .section-title{
     max-width:850px;
     margin:auto;
+    width: 100%;
 }
 
 .section-title h4{
@@ -532,12 +536,14 @@ nav a:hover{
 .contact-container{
     max-width:700px;
     margin:60px auto 0;
+    width: 100%;
 }
 
 .contact form{
     display:flex;
     flex-direction:column;
     gap:20px;
+    width: 100%;
 }
 
 .contact input,
@@ -562,12 +568,14 @@ footer{
     background:#081423;
     color:white;
     padding:80px 8% 20px;
+    width: 100%;
 }
 
 .footer-container{
     display:grid;
     grid-template-columns:2fr 1fr 1fr;
     gap:50px;
+    width: 100%;
 }
 
 .footer-container h2{
@@ -616,7 +624,7 @@ footer{
 .whatsapp{
     position:fixed;
     bottom:20px;
-    right:20px; /* Anchored neatly to the actual screen edge */
+    right:20px; 
     width:60px;
     height:60px;
     background:#25D366;
@@ -637,8 +645,8 @@ footer{
 
 #topBtn{
     position:fixed;
-    bottom:90px;
-    right:20px; /* Anchored neatly directly above the WhatsApp button */
+    bottom:95px;
+    right:20px; 
     width:60px;
     height:60px;
     border:none;
@@ -677,9 +685,12 @@ footer{
     }
 
     header{
-        padding: 12px 20px;
+        padding: 12px 15px;
         background:#081423; 
         width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .logo {
@@ -690,19 +701,20 @@ footer{
     }
 
     .logo-image{
-        width: 45px;
-        height: 45px;
+        width: 75px; /* Fixed: Changes it from tiny to the perfect "big small" balance */
+        height: auto;
         object-fit: contain;
     }
 
     .text h2{
-        font-size:14px;
-        letter-spacing:1px;
+        font-size:13px;
+        letter-spacing:0.5px;
     }
 
     .text p{
         font-size:8px;
-        letter-spacing:0.5px;
+        letter-spacing:0px;
+        display: none; /* Hides subtext on small phones to keep bar clean */
     }
 
     .menu{
@@ -740,27 +752,31 @@ footer{
         font-size:16px;
     }
 
-    /* --- Forces Grids to Expand to full mobile width --- */
+    /* --- Force everything inside the viewport --- */
     .about, .properties, .why-us, .stats, .testimonials, .contact {
         padding: 60px 15px;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden;
     }
 
     .about-gallery, .property-grid, .why-grid, .stats-grid, .testimonial-grid {
-        grid-template-columns: 1fr !important; /* Stack columns completely layout-wise */
-        width: 100%;
-        max-width: 100%;
+        grid-template-columns: 1fr !important; 
+        width: 100% !important;
+        max-width: 100% !important;
         margin-top: 40px;
         gap: 25px;
     }
 
     .property-card, .gallery-card, .why-card, .stat-card, .testimonial-card {
-        width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
         text-align: center;
     }
 
     .property-card img, .gallery-card img {
         width: 100%;
-        height: 280px; /* Makes your property pictures nice, clear, and big */
+        height: 280px; 
     }
 
     .testimonial-card .client {
@@ -773,20 +789,29 @@ footer{
         font-size:32px;
     }
 
+    /* --- Footer Centered and Stacked --- */
     .footer-container{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
         text-align:center;
         gap:40px;
+        width: 100%;
+    }
+
+    .footer-container div {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-container ul {
+        padding: 0;
     }
 
     .footer-container p {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
+        display: block;
+        text-align: center;
+        margin: 10px auto;
     }
 
-    /* Keep the floating buttons cleanly structured relative to device viewing windows */
     .whatsapp {
         right: 15px;
         bottom: 15px;
@@ -800,4 +825,4 @@ footer{
         width: 55px;
         height: 55px;
     }
-      }
+  }
