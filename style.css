@@ -678,18 +678,36 @@ footer{
 }
 
 @media (max-width:768px){
+    /* --- Global Mobile Overrides --- */
+    body {
+        text-align: center; /* Centers default text layout across components */
+    }
+
     header{
-        padding: 12px 24px;
+        padding: 12px 20px;
         background:#081423; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Forcing Logo Container layout to stay small and centered inline */
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-align: left; /* Keeps logo text cleanly aligned with its small icon */
     }
 
     .logo-image{
-        width:42px;
-        height:42px;
+        width: 45px; /* Manually shrinks down the large image asset */
+        height: 45px;
+        object-fit: contain;
     }
 
     .text h2{
-        font-size:15px;
+        font-size:14px;
         letter-spacing:1px;
     }
 
@@ -728,10 +746,11 @@ footer{
     
     .hero {
         height: 100vh;
+        padding: 0 20px;
     }
 
     .content h1{
-        font-size:38px;
+        font-size:36px;
     }
 
     .content p{
@@ -745,12 +764,14 @@ footer{
         letter-spacing: 2px;
     }
 
-    .about{
-        padding:60px 20px;
+    /* --- Sections Centering --- */
+    .about, .properties, .why-us, .stats, .testimonials, .contact {
+        padding: 60px 20px;
+        text-align: center;
     }
 
     .section-title h2{
-        font-size:30px;
+        font-size:28px;
     }
 
     .section-title p{
@@ -765,31 +786,48 @@ footer{
 
     .gallery-card img{
         height:240px;
+        margin: 0 auto; /* Centers images if they downscale */
     }
 
-    .properties, .why-us, .stats, .testimonials, .contact {
-        padding: 60px 20px;
+    .property-card, .why-card, .stat-card, .testimonial-card {
+        text-align: center;
     }
 
-    .property-grid, .why-grid, .stats-grid, .testimonial-grid {
-        margin-top: 40px;
+    .testimonial-card .client {
+        flex-direction: column; /* Stacks client picture and name on mobile */
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
     }
 
     .cta{
        height:65vh;
+       padding: 0 20px;
     }
 
     .cta-content h2{
-        font-size:34px;
+        font-size:32px;
     }
 
     .cta-content p{
         font-size:15px;
     }
 
+    /* --- Footer Centering Fix --- */
     .footer-container{
         grid-template-columns:1fr;
-        text-align:center;
+        text-align:center; /* Centers all heading & descriptive paragraphs */
         gap:40px;
     }
-  }
+
+    .footer-container ul {
+        padding: 0;
+    }
+
+    .footer-container p {
+        display: flex;
+        justify-content: center; /* Centers the icon + text pairs */
+        align-items: center;
+        gap: 8px;
+    }
+}
